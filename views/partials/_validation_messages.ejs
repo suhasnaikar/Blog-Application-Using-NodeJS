@@ -1,0 +1,18 @@
+<% if(typeof errors !='undefined' ) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="flash-message">
+        <%errors.forEach(function(error){ %>
+            * <%= error.msg%> <br>
+                <%})%>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <script>
+        hide_val_div();
+        function hide_val_div() {
+            setTimeout(function () {
+                $('#flash-message').fadeOut('slow');
+            }, 1500); // <-- time in milliseconds
+        }
+    </script>
+<% } %>

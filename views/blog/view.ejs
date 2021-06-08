@@ -1,0 +1,76 @@
+<%- include('../partials/header') %>
+
+<body>
+<%- include('./blog_partials/navbar.ejs') %>
+<section class="contact-us">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+</div>
+</div>
+</div>
+</section>
+<section class="blog-posts grid-system" style="margin-bottom: 100px;">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<!-- For Displaying Validation & Flash Messages -->
+<%- messages('./partials/_flash_messages', locals) %>
+<%- include('../partials/_validation_messages.ejs') %>
+<!-- End Displaying Validation & Flash Messages -->
+<a href="/blogs/add" class="btn btn-primary btn-block">Add New Post</a>
+<br>
+<% if(blogData.length){ %>
+<table class="table table-responsive table-bordered">
+<thead class="thead-dark">
+<tr>
+<th scope="col">Image</th>
+<th scope="col">Title</th>
+<th scope="col">Description</th>
+<th scope="col">Details</th>
+<th scope="col">Edit</th>
+<th scope="col">Delete</th>
+</tr>
+</thead>
+<tbody>
+<% blogData.forEach(function(blog){ %>
+<tr>
+<td>
+<% if(blog.image=="NA" ){ %>
+<a href="/blogs/upload_image/<%=blog._id%>"
+class="btn btn-dark btn-block">Add Image</a>
+<% }else{ %>
+<!-- <img src="/uploads/<%= blog.image %>" alt=""
+style="height:100px;width:130px"> -->
+<a href="/blogs/upload_image/<%=blog._id%>"
+class="btn btn-success btn-block">Change Image</a>
+<%}%>
+</td>
+<td><span style="color:#f48840">
+<%= blog.title %>
+</span></td>
+<td>
+<%- blog.description.substr(0,100)+"<b>...<a href=''>Readmore</a></b>"
+%>
+</td>
+<td><a href="/blogs/details/<%= blog._id %>"
+class="btn btn-warning">Details</a></td>
+<td><a href="/blogs/edit/<%= blog._id %>" class="btn btn-info">Edit</a></td>
+<td><a href="/blogs/delete/<%= blog._id %>"
+class="btn btn-danger">Delete</a></td>
+</tr>
+<%})%>
+</tbody>
+</table>
+<% }else{ %>
+    <h5 style="text-align: center;">NO RECORDS FOUND</h5>
+<% } %>
+</div>
+</div>
+</div>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+
+</html>

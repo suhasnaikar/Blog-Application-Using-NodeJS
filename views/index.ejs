@@ -1,0 +1,73 @@
+<%- include('partials/header') %>
+    <!-- ***** Preloader Start ***** -->
+  <body>    
+    <%- include('partials/navbar') %>
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="main-banner header-text">
+      <div class="container-fluid">        
+        <div class="owl-banner owl-carousel">
+          <% blogData.forEach(function(blog){ %>
+          <div class="item">            
+            <% if(blog.image == "NA"){ %>
+            <img src="/uploads/no-image.png" alt="" style="width: 436px;height:377px;">
+            <% }else { %>
+            <img src="/uploads/<%= blog.image %>" alt="" style="width: 436px;height:377px;">                        
+            <%}%>
+            <div class="item-content">
+              <div class="main-content">                
+                <a href='/singleblog/<%= blog.slug %>'><h4><%= blog.title %></h4></a>
+                <ul class="post-info">
+                  <li><a href="#"><%= blog.user %></a></li>
+                  <li><a href="#"><%= blog.updated_at.toDateString() %></a></li>
+                 
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <section class="blog-posts" style="margin-bottom: 100px;;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="all-blog-posts">
+              <div class="row">
+              <% blogData.forEach(function(blog){ %>
+                <div class="col-lg-6">
+                  <div class="blog-post">
+                    <div class="blog-thumb">
+                      <% if(blog.image=="NA" ){ %>
+                        <img src="/uploads/no-image.png" alt="" style="max-height:250px;">
+                        <% }else { %>
+                        <img src="/uploads/<%= blog.image %>" alt="" style="max-height:250px;">
+                        <%}%>
+                    </div>
+                    <div class="down-content" style="height: 300px;">
+                      <span><a href='/singleblog/<%= blog.slug %>' style="color:#f48840!important"><%= blog.title %></a></span>                      
+                      <ul class="post-info">
+                        <li><a href="#"><%= blog.user %></a></li>
+                        <li><a href="#"><%= blog.updated_at.toDateString() %></a></li>                        
+                      </ul>
+                      <%- blog.description.substr(0,250) %><b><a href='/singleblog/<%= blog.slug %>'>&nbsp;Readmore...</a></b>
+                    </div>
+                  </div>
+                </div>
+            
+<% }) %>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </section>
+<%- include('partials/footer') %>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+<body>
+<%- include('./blog_partials/navbar.ejs') %>
+<section class="contact-us">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+</div>
+</div>
+</div>
+</section>
+<section class="blog-posts grid-system" style="margin-bottom: 100px;">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<br>
+<h6>Created By : <span style="color:#f48840"><%= blog.user.fullname %></span> &nbsp;On&nbsp;   <span style="color:#f48840"><%= blog.updated_at.toDateString() %></span></h6>
+<br>
+<% if(blog.image=="NA" ){ %>
+<a href="/blogs/upload_image/<%=blog._id%>" class="btn btn-dark btn-block">Add Image</a>
+<% }else{ %>
+<img src="/uploads/<%= blog.image %>" alt="" style="height:200px;">        
+<a href="/blogs/upload_image/<%=blog._id%>" class="btn btn-dark btn-block">Change Image</a>
+<br>
+<%}%>
+<h5 style="color:#f48840"><%= blog.title %></h5>
+<%- blog.description %>
+</div>
+</div>
+</div>
+</section>
+
+<%- include('../partials/footer') %>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

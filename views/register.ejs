@@ -1,0 +1,61 @@
+<%- include('partials/header') %>    
+<body>    
+<%- include('partials/navbar') %>
+<section class="contact-us">
+<div class="container">
+<div class="row">
+
+<div class="col-lg-12">
+<div class="down-contact">
+<div class="row">
+<div class="col-lg-8 offset-lg-2">
+<div class="sidebar-item contact-form" style="border: 1px solid black;padding: 40px;">
+<div class="sidebar-heading">
+<h2>Register & Post Your Blogs</h2>
+</div>
+
+<!-- For Displaying Validation & Flash Messages -->
+<%- messages('partials/_flash_messages', locals) %>
+<%- include('partials/_validation_messages.ejs') %>
+<!-- End Displaying Validation & Flash Messages -->
+
+<div class="content">
+<form id="contact" action="/users/register" method="post">
+<div class="row">
+<div class="col-md-6 col-sm-12">
+<fieldset>
+<input name="fullname" type="text" id="fullname" placeholder="Your name" value="<%=locals.formData?formData.fullname:''%>">
+</fieldset>
+</div>
+<div class="col-md-6 col-sm-12">
+<fieldset>
+<input name="email" type="text" id="email" placeholder="Your email" value="<%=locals.formData?formData.fullname:''%>">
+</fieldset>
+</div>
+<div class="col-md-12 col-sm-12">
+<fieldset>
+<input name="password" type="password" id="password" placeholder="Your Password" value="<%=locals.formData?formData.fullname:''%>">
+</fieldset>
+</div>
+<div class="col-md-12 col-sm-12">
+<fieldset>
+<input name="confirm_password" type="password" id="confirm_password" placeholder="Confirm Password" value="<%=locals.formData?formData.fullname:''%>">
+</fieldset>
+</div>
+
+<div class="col-lg-12">
+<fieldset>
+<button type="submit" id="form-submit" class="main-button btn-block custom-button">Register</button>
+</fieldset>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>                  
+</div>
+</div>
+</section>
+<%- include('partials/footer') %>
+</body>
+</html>

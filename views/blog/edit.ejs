@@ -1,0 +1,68 @@
+<%- include('../partials/header') %>
+
+<body>
+<%- include('./blog_partials/navbar.ejs') %>
+<section class="contact-us">
+<div class="container">
+<div class="row">
+
+<div class="col-lg-12">
+<div class="down-contact">
+<div class="row">
+<div class="col-lg-8 offset-lg-2">
+<div class="sidebar-item contact-form">
+<div class="sidebar-heading">
+<h2>Add New Blog Post</h2>
+</div>
+<!-- For Displaying Validation & Flash Messages -->
+<%- messages('./partials/_flash_messages', locals) %>
+<%- include('../partials/_validation_messages.ejs') %>
+<!-- End Displaying Validation & Flash Messages -->
+<div class="content" style="margin-bottom:110px;">
+<form id="contact" action="/blogs/edit/<%=locals.formData?formData._id:blogData._id%>" method="post">
+<input type="text" name="blog_id" id="blog_id" value="<%=locals.formData?formData._id:blogData._id%>" readonly>
+<div class="row">
+<div class="col-md-12 col-sm-12">
+<fieldset>
+<input name="author" type="text" id="author"
+value="<%= locals.user?user.fullname:'' %>"
+readonly>
+</fieldset>
+</div>
+<div class="col-md-12 col-sm-12">
+<fieldset>
+<input name="title" type="text" id="title"
+placeholder="Add Title"
+value="<%=locals.formData?formData.title:blogData.title%>">
+</fieldset>
+</div>
+<div class="col-md-12 col-sm-12">
+<fieldset>
+<textarea name="description" id="editor"
+cols="30" rows="10"
+placeholder="Add Description"><%-locals.formData?formData.description:blogData.description%></textarea>
+</fieldset>
+</div>
+
+<div class="col-lg-12" style="margin-top:30px;">
+<fieldset>
+<button type="submit" id="form-submit"
+class="main-button btn-block custom-button">Update
+Post</button>
+</fieldset>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<%- include('../partials/footer') %>
+<script src="/template/ckeditor/ckeditor.js"></script>
+<script src="/template/ckeditor/ckeditor_config.js"></script>
+<!-- <script>CKEDITOR.instances['editor'].getData();</script> -->
+</body>
+
+</html>

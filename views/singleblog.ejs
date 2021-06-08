@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+<!-- ***** Preloader Start ***** -->
+<style>
+    .blog-posts {
+       margin-top: 0;
+}
+</style>
+<body>
+<%- include('partials/navbar') %>
+    <section class="blog-posts grid-system">
+        <div class="container">
+            <div class="row"></div>
+        </div>
+    </section>
+<section class="blog-posts">
+<div class="container" style="margin-top: 100px;margin-bottom:150px;">
+<div class="row">
+<div class="col-lg-12">
+<div class="all-blog-posts">
+<div class="row">
+<% blogData.forEach(function(blog){ %>
+<div class="col-lg-12">
+<div class="blog-post">
+<div class="blog-thumb">
+<% if(blog.image=="NA" ){ %>
+<img src="/uploads/no-image.png" alt=""
+style="max-height:350px;">
+<% }else { %>
+<img src="/uploads/<%= blog.image %>" alt=""
+style="max-height:350px;">
+<%}%>
+</div>
+<div class="down-content">
+<span>
+<%= blog.title %>
+</span>
+<ul class="post-info">
+<li><a href="#">
+<%= blog.user %>
+</a></li>
+<li><a href="#">
+<%= blog.updated_at.toDateString() %>
+</a></li>
+</ul>
+<%- blog.description%><b></b>
+</div>
+</div>
+</div>
+
+<% }) %>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</section>
+<%- include('partials/footer') %>
+</body>
+
+</html>
